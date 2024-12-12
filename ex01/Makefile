@@ -1,19 +1,20 @@
 CC = g++
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
-CPPFILES = megaphone.cpp
+CPPFILES = main.cpp\
+	commands.cpp
 OFILES = $(CPPFILES:.cpp=.o)
-
-NAME = megaphone
+NAME = phonebook
 
 all: $(NAME)
 
-$(NAME): $(OFILES)
+$(NAME) : $(OFILES)
 	@$(CC) $(CPPFLAGS) $(OFILES) -o $(NAME)
 
-clean: 
+clean:
 	@rm -f $(OFILES)
 
-fclean: clean
+fclean:
+	@rm -f $(OFILES)
 	@rm -f $(NAME)
 
 re: fclean all
