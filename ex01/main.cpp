@@ -1,5 +1,5 @@
 
-#include "phonebook.h"
+#include "PhoneBook.hpp"
 
 int main()
 {
@@ -10,9 +10,6 @@ int main()
     {
         std::cout << "enter command: ";
         std::getline(std::cin, cmd);
-
-        // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
         if (cmd == "ADD")
             phonebook.add();
         else if (cmd == "SEARCH")
@@ -20,6 +17,6 @@ int main()
         else if (cmd == "EXIT")
             exit(EXIT_SUCCESS);
         else
-            std::cout << "invalid cmd" << std::endl;
+            std::cout << "invalid command" << std::endl;
     }
 }

@@ -14,24 +14,19 @@ class Contact
         std::string darkest_secr;
     public:
         Contact() {};
-        void    set_first_name(std::string input) 
-        {
+        void    set_first_name(std::string input) {
             first_name = input;
         }
-        void    set_last_name(std::string input)
-        {
+        void    set_last_name(std::string input) {
             last_name = input;
         }
-        void    set_nickname(std::string input)
-        {
+        void    set_nickname(std::string input) {
             nickname = input;
         }
-        void    set_phone_nbr(std::string input)
-        {
+        void    set_phone_nbr(std::string input) {
             phone_nbr = input;
         }
-        void    set_secret(std::string input)
-        {
+        void    set_secret(std::string input) {
             darkest_secr = input;
         }
         std::string get_first_name() {
