@@ -1,7 +1,8 @@
 CC = g++
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 CPPFILES = main.cpp\
-	commands.cpp
+	add.cpp\
+	search.cpp
 OFILES = $(CPPFILES:.cpp=.o)
 NAME = phonebook
 

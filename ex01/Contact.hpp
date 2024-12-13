@@ -44,7 +44,6 @@ class Contact
         std::string get_secret() {
             return (darkest_secr);
         }
-
 };
 
 #endif

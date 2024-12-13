@@ -3,41 +3,6 @@
 #include <iomanip>
 #include <string>
 
-void    PhoneBook::add()
-{
-    Contact     new_contact;
-    std::string input;
-
-    std::cout << "Enter first name: ";
-    std::getline(std::cin, input);
-    if (input == "")
-        return ;
-    new_contact.set_first_name(input);
-    std::cout << "Enter last name: ";
-    std::getline(std::cin, input);
-    if (input == "")
-        return ;
-    new_contact.set_last_name(input);
-    std::cout << "Enter nickname: ";
-    std::getline(std::cin, input);
-    if (input == "")
-        return ;
-    new_contact.set_nickname(input);
-    std::cout << "Enter phone number: ";
-    std::getline(std::cin, input);
-    if (input == "")
-        return ;
-    new_contact.set_phone_nbr(input);
-    std::cout << "Enter darkest secret: ";
-    std::getline(std::cin, input);
-    if (input == "")
-        return ;
-    new_contact.set_secret(input);
-
-    contacts[contact_count % 8] = new_contact;
-    contact_count++;
-}
-
 std::string truncate(const std::string str, size_t width)
 {
     if (str.length() > width) 
@@ -46,8 +11,6 @@ std::string truncate(const std::string str, size_t width)
     }
     return (str);
 }
-
-// problem with multi byte characters like äöü
 
 bool    is_numeric(std::string str)
 {
@@ -63,11 +26,9 @@ bool    is_numeric(std::string str)
     return (true);
 }
 
-void    PhoneBook::search(PhoneBook phonebook)
+void    PhoneBook::print_contacts(PhoneBook phonebook)
 {
-    std::string input;
-    int         index;
-    Contact     contact;
+    Contact contact;
 
     for (int i = 0; i < 8; i++)
     {
@@ -80,17 +41,11 @@ void    PhoneBook::search(PhoneBook phonebook)
         std::cout << std::setw(10) << std::right << truncate(contact.get_nickname(), 10) << "|";
         std::cout << "\n";
     }
+}
 
-    std::cout << "Enter a valid index: ";
-    std::getline(std::cin, input);
-
-    if (!is_numeric(input))
-    {
-        std::cout << "Error: Not a number\n";
-        return ;
-    }
-
-    index = std::stoi(input);
+void    PhoneBook::retrive_contact(PhoneBook phonebook, int index)
+{
+    Contact     contact;
 
     if (index >= 0 && index <= 8)
     {
@@ -107,8 +62,22 @@ void    PhoneBook::search(PhoneBook phonebook)
             std::cout << "Error: contact has not been created for that index\n";
     }
     else
-    {
         std::cout << "Error: Not valid index\n";
+}
+
+void    PhoneBook::search(PhoneBook phonebook)
+{
+    std::string input;
+    int         index;
+
+    print_contacts(phonebook);
+    std::cout << "Enter a valid index: ";
+    std::getline(std::cin, input);
+    if (!is_numeric(input))
+    {
+        std::cout << "Error: Not a number\n";
         return ;
     }
+    index = std::stoi(input);
+    retrive_contact(phonebook, index);
 }

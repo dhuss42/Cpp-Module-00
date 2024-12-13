@@ -14,6 +14,8 @@ class PhoneBook
         }
         void add();
         void search(PhoneBook phonebook);
+        void print_contacts(PhoneBook PhoneBook);
+        void retrive_contact(PhoneBook PhoneBook, int index);
         Contact getContact(int index){
             return (contacts[index]);
         }

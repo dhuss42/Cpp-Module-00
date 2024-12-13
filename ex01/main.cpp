@@ -8,7 +8,7 @@ int main()
 
     while (1)
     {
-        std::cout << "enter command: ";
+        std::cout << "Enter command: ";
         std::getline(std::cin, cmd);
         if (cmd == "ADD")
             phonebook.add();
@@ -17,6 +17,6 @@ int main()
         else if (cmd == "EXIT")
             exit(EXIT_SUCCESS);
         else
-            std::cout << "invalid command" << std::endl;
+            std::cout << "Error: Invalid command\n";
     }
 }
