@@ -5,31 +5,29 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dhuss <dhuss@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/12/16 14:11:37 by dhuss             #+#    #+#              #
-#    Updated: 2024/12/16 14:11:38 by dhuss            ###   ########.fr        #
+#    Created: 2024/12/16 14:44:47 by dhuss             #+#    #+#              #
+#    Updated: 2024/12/16 16:00:35 by dhuss            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = g++
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
-CPPFILES = main.cpp\
-	add.cpp\
-	search.cpp
+CPPFILES = Account.cpp\
+	tests.cpp
 OFILES = $(CPPFILES:.cpp=.o)
-NAME = phonebook
+NAME = Account
+
+$(NAME): $(OFILES)
+	@$(CC) $(CPPFLAGS) $(OFILES) -o $(NAME)
 
 all: $(NAME)
-
-$(NAME) : $(OFILES)
-	@$(CC) $(CPPFLAGS) $(OFILES) -o $(NAME)
 
 clean:
 	@rm -f $(OFILES)
 
-fclean:
-	@rm -f $(OFILES)
+fclean: clean
 	@rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all re clean fclean
