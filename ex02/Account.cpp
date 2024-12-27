@@ -26,7 +26,7 @@ int Account::_totalNbWithdrawals = 0;
 void	Account::_displayTimestamp (void)
 {
 	std::time_t now;
-	char time_str[20]; // change
+	char time_str[18];
 
 	now = std::time(nullptr);
 	// get current time since epoch
@@ -43,6 +43,7 @@ Account::Account(int initial_deposit) : _accountIndex(_nbAccounts), _amount(init
 	_displayTimestamp();
 	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";created\n";
 }
+// member intialiser list
 
 Account::~Account()
 {
@@ -89,7 +90,6 @@ void	Account::displayAccountsInfos(void)
 	std::cout << ";withdrawals:" << getNbWithdrawals() << '\n';
 	std::cout << "\n";
 }
-
 
 void Account::makeDeposit(int deposit)
 {
