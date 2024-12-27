@@ -21,7 +21,12 @@ int	PhoneBook::prompt(std::string str, Contact *new_contact, t_info info)
 
 	std::cout << str;
 	std::getline(std::cin, input);
-	if (input == "")
+	if (std::cin.eof() || std::cin.fail())
+	{
+		std::cout << "\nInput stream closed. Exiting program.\n";
+		exit(EXIT_SUCCESS);
+	}
+	else if (input == "")
 		return (-1);
 	if (info == FIRSTNAME)
 		new_contact->set_first_name(input);
@@ -125,8 +130,11 @@ void	PhoneBook::search(PhoneBook phonebook)
 	std::cout << "Enter a valid index: ";
 	std::getline(std::cin, input);
 	if (std::cin.eof() || std::cin.fail())
-		return ;
-	if (!is_numeric(input))
+	{
+		std::cout << "\nInput stream closed. Exiting program.\n";
+		exit(EXIT_SUCCESS);
+	}
+	if (!is_numeric(input) || input == "")
 	{
 		std::cout << "Error: Not a number\n";
 		return ;
